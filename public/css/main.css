@@ -92,3 +92,17 @@ td, th {
 .product-rows {
   margin-top: 30px;
 }
+
+/* Product Details */
+.product-details {
+  margin-top: 15%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid grey;
+  padding: 10px;
+  border-radius: 25px;
+  height: 200px;
+  background: rgb(215, 214, 214);
+  height: auto;
+}
