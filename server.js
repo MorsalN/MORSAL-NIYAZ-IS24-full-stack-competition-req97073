@@ -4,6 +4,7 @@ const chance = new Chance();
 const bodyParser = require("body-parser");
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 // const product_data = require('.product_data'); // store and retrieve product data
 
@@ -26,8 +27,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
+// Saved in generated-data.json
 // Pre-populating JSON object with 40 sample products using Chance as a random generator
-const productsDatabase = []; // create an empty array to store products
+const products = {}; // empty object to store products
 
 for (let i = 1; i <= 40; i++) { // loop through 40 times to generate 40 products
   const product = {
@@ -45,8 +47,12 @@ for (let i = 1; i <= 40; i++) { // loop through 40 times to generate 40 products
     startDate: chance.date({ string: true, american: false }),
     methodology: chance.pickone(['Agile', 'Waterfall'])
   };
-  productsDatabase.push(product); // add the generated product to the products array
+  products[i] = product;
 }
+
+// read the contents of the generated-data.json file and parse it as JSON
+const jsonString = fs.readFileSync('generated-data.json', 'utf8');
+const productsDatabase = JSON.parse(jsonString);
 
 
 // GET
@@ -66,12 +72,12 @@ app.get('/api/products', (req, res) => {
 
 // View Details Product Endpoint
 app.get('/api/products/:id/details', (req, res) => {
-  const productId = req.params.id;
-  const product = productsDatabase.find(p => p.productId == productId);
+  const productId = parseInt(req.params.id);
+  const product = productsDatabase[productId];
   const templateVars = {
     product: product
   };
-  res.render('pages/details', templateVars);
+  res.render('pages/product_details', templateVars);
 });
 
 // Health Endpoint 
