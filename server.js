@@ -53,6 +53,7 @@ for (let i = 1; i <= 40; i++) { // loop through 40 times to generate 40 products
 // read the contents of the generated-data.json file and parse it as JSON
 const jsonString = fs.readFileSync('generated-data.json', 'utf8');
 const productsDatabase = JSON.parse(jsonString);
+const productCount = Object.keys(productsDatabase).length;
 
 
 // GET
@@ -64,8 +65,10 @@ app.get('/api', (req, res) => {
 // Products Endpoint
 app.get('/api/products', (req, res) => {
   // console.log('productDatabaseArray', productsDatabase);
+  // console.log('count', productCount);
   const templateVars = {
-    productList: productsDatabase
+    productList: productsDatabase,
+    productCount: productCount
   };
   res.render('pages/index', templateVars);
 });

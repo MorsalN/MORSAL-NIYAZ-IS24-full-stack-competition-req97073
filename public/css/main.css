@@ -95,7 +95,7 @@ td, th {
 
 /* Product Details */
 .product-details {
-  margin-top: 15%;
+  margin-top: 10%;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -105,4 +105,10 @@ td, th {
   height: 200px;
   background: rgb(215, 214, 214);
   height: auto;
+}
+
+/* Total Count */
+.count {
+  margin-top: 2%;
+  text-align: center;
 }
