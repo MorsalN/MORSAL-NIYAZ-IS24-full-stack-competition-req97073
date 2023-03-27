@@ -6,22 +6,36 @@
         <th>Product</th>
         <th>Owner Name</th>
         <th>Details</th>
-        <th>In Development</th>
-        <th>Done</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <% Object.values(productList).forEach(function(product) { %>
-      <tr class="product-rows">
-        <td><span id="productCount"><%= product.productName %></span></td>
-        <td><span id="productOwner"><%= product.productOwnerName %></span></td>
-        <td><span id="productDetails"><form action="/api/products/<%= product.productId %>/details" method="GET">
-          <button type="submit" class="btn btn-outline-primary">View</button>
-        </form></span></td>
-        <td><span id="inDevelopmentCount"></span></td>
-        <td><span id="doneCount"></span></td>
-      </tr>
-      <% }); %>
+        <tr class="product-rows">
+          <td><span id="productCount">
+              <%= product.productName %>
+            </span></td>
+          <td><span id="productOwner">
+              <%= product.productOwnerName %>
+            </span></td>
+          <td><span id="productDetails">
+              <form action="/api/products/<%= product.productId %>/details" method="GET">
+                <button type="submit" class="btn btn-outline-info">View</button>
+              </form>
+            </span></td>
+          <td><span id="productEdit">
+              <form action="/api/products/<%= product.productId %>/edit" method="PUT">
+                <button type="submit" class="btn btn-outline-secondary">Edit</button>
+              </form>
+            </span></td>
+          <td><span id="doneCount">
+              <form action="/api/products/<%= product.productId %>/delete" method="DELETE">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+              </form>
+            </span></td>
+        </tr>
+        <% }); %>
     </tbody>
   </table>
 </div>
