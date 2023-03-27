@@ -1,0 +1,27 @@
+<!-- Main table with all the products listed -->
+<div class="main-table-div">
+  <table class="main-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Owner Name</th>
+        <th>Details</th>
+        <th>In Development</th>
+        <th>Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% productList.forEach(function(product) { %>
+      <tr class="product-rows">
+        <td><span id="productCount"><%= product.productName %></span></td>
+        <td><span id="productOwner"><%= product.productOwnerName %></span></td>
+        <td><span id="productDetails"><form action="/api/products/<%= product.productId %>/details" method="GET">
+          <button type="submit" class="btn btn-outline-primary">View</button>
+        </form></span></td>
+        <td><span id="inDevelopmentCount"></span></td>
+        <td><span id="doneCount"></span></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
