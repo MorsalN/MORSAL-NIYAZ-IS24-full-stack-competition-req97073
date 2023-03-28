@@ -73,6 +73,15 @@ app.get('/api/products', (req, res) => {
   res.render('pages/index', templateVars);
 });
 
+// Add Products Endpoint
+app.get('/api/products/add', (req, res) => {
+  const templateVars = {
+    productList: productsDatabase,
+    productCount: productCount
+  };
+  res.render('pages/product_add', templateVars);
+});
+
 // View Details Product Endpoint
 app.get('/api/products/:id/details', (req, res) => {
   const productId = parseInt(req.params.id);
