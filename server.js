@@ -21,6 +21,10 @@ app.use(express.static(path.join(__dirname, 'public'))); // to let express know 
 app.set('views', path.join(__dirname, 'views'));
 // app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+// Read the contents of the generated-data.json file and parse it as JSON
+const jsonString = fs.readFileSync('generated-data.json', 'utf8');
+const productsDatabase = JSON.parse(jsonString);
+const productCount = Object.keys(productsDatabase).length;
 
 // Set 
 // What engine to use (View) and extention files to look at
@@ -50,10 +54,6 @@ for (let i = 1; i <= 40; i++) { // loop through 40 times to generate 40 products
   products[i] = product;
 }
 
-// read the contents of the generated-data.json file and parse it as JSON
-const jsonString = fs.readFileSync('generated-data.json', 'utf8');
-const productsDatabase = JSON.parse(jsonString);
-const productCount = Object.keys(productsDatabase).length;
 
 
 // GET
@@ -97,6 +97,39 @@ app.get("/api/health", (req, res) => {
   res.status(200).send('Component is healthy! :)');
 });
 
+
+// POST
+// Handle Form Submission
+app.post('/api/products/add', (req, res) => {
+  const { names, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
+
+  // Ensure ids are not the same
+  // const newProductId = productCount + 1;
+
+  // // Add a new product to the existing data
+  const newProductData = {
+    // productId: newProductId,
+    productName,
+    productOwnerName,
+    names: names,
+    scrumMasterName,
+    startDate,
+    methodology
+  };
+  productsDatabase[new Date().getTime()] = newProductData;
+
+  // Write the updated data back to the file
+  fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
+
+
+  const templateVars = {
+    productList: productsDatabase,
+    productCount: productCount
+  };
+
+  res.redirect('/api');
+
+});
 
 
 

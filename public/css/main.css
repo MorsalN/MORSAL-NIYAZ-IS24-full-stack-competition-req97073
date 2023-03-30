@@ -105,7 +105,7 @@ td, th {
 
 /* Add Form */
 .add-form {
-  margin-top: 10%;
+  /* margin-top: 10%; */
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -114,6 +114,7 @@ td, th {
   border-radius: 25px;
   background: rgb(188, 198, 186);
   height: auto;
+  display: flex;
 }
 
 label {
@@ -145,6 +146,25 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #0069d9;
+}
+
+.form-row {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-column {
+  flex-basis: 48%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 /* Total Count */

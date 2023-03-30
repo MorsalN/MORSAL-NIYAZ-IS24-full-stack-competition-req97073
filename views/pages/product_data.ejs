@@ -3,6 +3,7 @@
   <table class="main-table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Product</th>
         <th>Owner Name</th>
         <th>Details</th>
@@ -13,6 +14,9 @@
     <tbody>
       <% Object.values(productList).forEach(function(product) { %>
         <tr class="product-rows">
+          <td><span id="productId">
+              <%= product.productId %>
+            </span></td>
           <td><span id="productCount">
               <%= product.productName %>
             </span></td>

@@ -17,17 +17,50 @@
 <body>
   <%- include('../partials/_header') %>
 
-
+    <!-- Add New Product From  -->
     <div class="add-form">
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+      <form action="/api/products/add" method="POST">
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <div class="form-row">
+          <div class="form-column">
+            <label for="add-product-name">Product Name:</label>
+            <input type="text" id="add-product-name" name="productName" placeholder="Brooklyn 99">
+          </div>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+          <div class="form-column">
+            <label for="add-product-owner-name">Product Owner</label>
+            <input type="text" id="add-product-owner-name" name="productOwnerName" placeholder="Jake Peralta">
+          </div>
+
+          <div class="form-column">
+            <label for="add-scrum-master">Scrum Master:</label>
+            <input id="add-scrum-master" name="scrumMasterName" placeholder="Gina Linetti"></input>
+          </div>
+
+          <div class="form-column">
+            <label for="add-start-date">Start Date:</label>
+            <input id="add-start-date" name="startDate" placeholder="YYYY/MM/DD"></input>
+          </div>
+
+        </div>
+
+        <div class="form-row">
+          <div class="form-column">
+            <% for (let i=1; i <=5; i++) { %>
+              <label for="add-developer-<%= i %>">Developer <%= i %>:</label>
+              <input type="text" id="add-developer-<%= i %>" name="names[]" placeholder="Amy Santiago">
+              <% } %>
+          </div>
+
+          <div class="form-column">
+            <label for="add-methodology">Methodology:</label>
+            <select id="add-methodology" name="methodology" placeholder="Agile">
+              <option value="">--Select Methodology--</option>
+              <option value="agile">Agile</option>
+              <option value="waterfall">Waterfall</option>
+            </select>
+          </div>
+        </div>
 
         <input type="submit" value="Submit">
       </form>
