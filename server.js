@@ -104,11 +104,11 @@ app.post('/api/products/add', (req, res) => {
   const { names, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
 
   // Ensure ids are not the same
-  // const newProductId = productCount + 1;
+  const newProductId = productCount + 1;
 
   // // Add a new product to the existing data
   const newProductData = {
-    // productId: newProductId,
+    productId: newProductId,
     productName,
     productOwnerName,
     names: names,
