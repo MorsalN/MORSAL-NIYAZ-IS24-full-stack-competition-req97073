@@ -85,9 +85,17 @@ app.get('/api/products/add', (req, res) => {
 // View Details Product Endpoint
 app.get('/api/products/:id/details', (req, res) => {
   const productId = parseInt(req.params.id);
+  const { names, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
   const product = productsDatabase[productId];
+  console.log('product', product);
   const templateVars = {
-    product: product
+    productId: productId,
+    productName: product.productName,
+    productOwnerName: product.productOwnerName,
+    names: product.names,
+    scrumMasterName: product.scrumMasterName,
+    startDate: product.startDate,
+    methodology: product.methodology
   };
   res.render('pages/product_details', templateVars);
 });
@@ -111,12 +119,13 @@ app.post('/api/products/add', (req, res) => {
     productId: newProductId,
     productName,
     productOwnerName,
-    names: names,
+    names,
     scrumMasterName,
     startDate,
     methodology
   };
-  productsDatabase[new Date().getTime()] = newProductData;
+  // productsDatabase[new Date().getTime()] = newProductData;
+  productsDatabase[newProductId] = newProductData;
 
   // Write the updated data back to the file
   fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
@@ -127,7 +136,7 @@ app.post('/api/products/add', (req, res) => {
     productCount: productCount
   };
 
-  res.redirect('/api');
+  res.redirect('/api/products');
 
 });
 
