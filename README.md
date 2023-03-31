@@ -21,7 +21,7 @@ You can also run the above all at once in the terminal with:
 - Install all dependencies (using the `npm install` command).
 - Run the development web server using the `nodemon server.js` command (nodemon is required, node will limit some functionality).
 
-## Detailed Steps
+## Steps
 
 ### Clone Repository
 
@@ -41,7 +41,7 @@ npm install express && npm install ejs && npm install body-parser && npm install
 cd MORSAL-NIYAZ-IS24-full-stack-competition-req97073.git
 ```
 
-### Go To Project Folder
+### Run Project
 
 ```sh
 nodemon server.js
