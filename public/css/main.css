@@ -53,14 +53,14 @@ body {
   }
 }
 
-/* table */
+/* Homepage Table */
 .main-table-div {
   margin-left: auto;
   margin-right: auto;
   width: 75%;
   height: 600px;
   overflow-y: scroll;
-  margin-top: 40px; 
+  margin-top: 20px; 
 }
 
 table.main-table {
@@ -104,7 +104,7 @@ td, th {
 }
 
 /* Add Form */
-.add-form {
+.add-form, .edit-form {
   /* margin-top: 10%; */
   width: 50%;
   margin-left: auto;
@@ -169,6 +169,6 @@ select {
 
 /* Total Count */
 .product-summary{
-  margin-top: 2%;
+  margin-top: 10px;
   text-align: center;
 }

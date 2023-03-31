@@ -105,6 +105,23 @@ app.get('/api/products/count', (req, res) => {
   res.json({ count: productCount });
 });
 
+// Edit Product Endpoint
+app.get('/api/products/:id/edit', (req, res) => {
+  const productId = parseInt(req.params.id);
+  const product = productsDatabase[productId];
+  const templateVars = {
+    productId: productId,
+    productName: product.productName,
+    productOwnerName: product.productOwnerName,
+    Developers: product.Developers,
+    scrumMasterName: product.scrumMasterName,
+    startDate: product.startDate,
+    methodology: product.methodology
+  };
+
+  res.render('pages/product_edit', templateVars);
+});
+
 // Health Endpoint 
 app.get("/api/health", (req, res) => {
   res.status(200).send('Component is healthy! :)');
@@ -131,6 +148,25 @@ app.post('/api/products/add', (req, res) => {
   };
   // productsDatabase[new Date().getTime()] = newProductData;
   productsDatabase[newProductId] = newProductData;
+
+  // Write the updated data back to the file
+  fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
+
+  res.redirect('/api/products');
+});
+
+// Edit Product Endpoint
+app.post('/api/products/:id/edit', (req, res) => {
+  const productId = parseInt(req.params.id);
+  const { Developers, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
+
+  // Update the existing product data
+  productsDatabase[productId].productName = productName;
+  productsDatabase[productId].productOwnerName = productOwnerName;
+  productsDatabase[productId].Developers = Developers;
+  productsDatabase[productId].scrumMasterName = scrumMasterName;
+  productsDatabase[productId].startDate = startDate;
+  productsDatabase[productId].methodology = methodology;
 
   // Write the updated data back to the file
   fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
