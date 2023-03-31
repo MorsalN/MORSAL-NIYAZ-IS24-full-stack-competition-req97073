@@ -5,6 +5,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h3 {
+  text-align: center;
+}
+
 .header {
   overflow: hidden;
   background-color: #385a8a;
@@ -34,7 +38,7 @@ body {
 }
 
 .header a.active {
-  background-color: #e8ad17;
+  background-color: #d19d1a;
   color: rgb(255, 255, 255);
 }
 
@@ -114,10 +118,10 @@ td, th {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid rgb(115, 137, 112);
+  border: 5px solid rgb(138, 159, 136);
   padding: 10px;
   border-radius: 25px;
-  background: rgb(188, 198, 186);
+  background: rgb(212, 219, 211);
   height: auto;
   display: flex;
 }
@@ -126,6 +130,7 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #294366;
 }
 
 input[type="text"],
@@ -136,21 +141,21 @@ textarea {
   padding: 5px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 25px;
   box-sizing: border-box;
 }
 
 input[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #d19d1a;
+  color: rgb(255, 253, 253);
   border: none;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 25px;
   cursor: pointer;
 }
 
 input[type="submit"]:hover {
-  background-color: #0069d9;
+  background-color: #e8ad17;
 }
 
 .form-row {
@@ -170,18 +175,20 @@ select {
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
 }
 
 /* Edit Form */
 .edit-form {
-  /* margin-top: 10%; */
+  margin-top: 10%;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid rgb(115, 137, 112);
+  border: 5px solid rgb(120, 112, 137);
   padding: 10px;
   border-radius: 25px;
-  background: rgb(188, 198, 186);
+  background: rgb(215, 211, 219);
   height: auto;
   display: flex;
 }

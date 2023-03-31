@@ -18,6 +18,8 @@
   <!-- Get contents from _header.ejs -->
   <%- include('../partials/_header') %>
 
+    <h3 style="color: #385a8a;">Add A Product</h3>
+
     <!-- Add New Product From  -->
     <div class="add-form">
       <form action="/api/products/add" method="POST">
@@ -56,7 +58,7 @@
           <div class="form-column">
             <label for="add-methodology">Methodology:</label>
             <select id="add-methodology" name="methodology" placeholder="Agile" required>
-              <option value="">--Select Methodology--</option>
+              <option value="">Select Methodology</option>
               <option value="agile">Agile</option>
               <option value="waterfall">Waterfall</option>
             </select>

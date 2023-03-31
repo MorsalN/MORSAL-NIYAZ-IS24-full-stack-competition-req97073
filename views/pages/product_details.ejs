@@ -18,30 +18,32 @@
   <!-- Get contents from _header.ejs -->
   <%- include('../partials/_header') %>
 
+    <h3 style="color: #385a8a;">Product Details</h3>
+
     <!-- Showing product details -->
     <div class="product-details">
       <h2 style="text-align: center; font-size: 20px;"><b>Product Details for:</b>
         <%= productName %>
-      </h2>
+      </h2><br>
       <ul class="product-details-ul" style="list-style-type: none">
         <li><b>Product ID:</b>
           <%= productId %>
-        </li>
+        </li><br>
         <li><b>Product Name:</b>
           <%= productName %>
-        </li>
+        </li><br>
         <li><b>Product Owner Name:</b>
           <%= productOwnerName %>
-        </li>
+        </li><br>
         <li><b>Developers:</b>
           <%= Developers %>
-        </li>
+        </li><br>
         <li><b>Scrum Master Name:</b>
           <%= scrumMasterName %>
-        </li>
+        </li><br>
         <li><b>Start Date:</b>
           <%= startDate %>
-        </li>
+        </li><br>
         <li><b>Methodology:</b>
           <%= methodology %>
         </li>
