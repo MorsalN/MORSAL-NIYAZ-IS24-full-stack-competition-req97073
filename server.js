@@ -72,7 +72,7 @@ app.get('/api/products', (req, res) => {
     productList: productsDatabase,
     productCount: productCount
   };
-  res.render('pages/index', templateVars);
+  res.status(200).render('pages/index', templateVars);
 });
 
 // Add Products Endpoint
@@ -81,45 +81,52 @@ app.get('/api/products/add', (req, res) => {
     productList: productsDatabase,
     productCount: productCount
   };
-  res.render('pages/product_add', templateVars);
+  res.status(200).render('pages/product_add', templateVars);
 });
 
 // View Details Product Endpoint
 app.get('/api/products/:id/details', (req, res) => {
   const productId = parseInt(req.params.id);
   const product = productsDatabase[productId];
-  const templateVars = {
-    productId: productId,
-    productName: product.productName,
-    productOwnerName: product.productOwnerName,
-    Developers: product.Developers,
-    scrumMasterName: product.scrumMasterName,
-    startDate: product.startDate,
-    methodology: product.methodology
-  };
-  res.render('pages/product_details', templateVars);
+  if (!product) {
+    res.status(404).send('Product not found');
+  } else {
+    const templateVars = {
+      productId: productId,
+      productName: product.productName,
+      productOwnerName: product.productOwnerName,
+      Developers: product.Developers,
+      scrumMasterName: product.scrumMasterName,
+      startDate: product.startDate,
+      methodology: product.methodology
+    };
+    res.status(200).render('pages/product_details', templateVars);
+  }
 });
 
 // Products Count Endpoint
 app.get('/api/products/count', (req, res) => {
-  res.json({ count: productCount });
+  res.status(200).json({ count: productCount });
 });
 
 // Edit Product Endpoint
 app.get('/api/products/:id/edit', (req, res) => {
   const productId = parseInt(req.params.id);
   const product = productsDatabase[productId];
-  const templateVars = {
-    productId: productId,
-    productName: product.productName,
-    productOwnerName: product.productOwnerName,
-    Developers: product.Developers,
-    scrumMasterName: product.scrumMasterName,
-    startDate: product.startDate,
-    methodology: product.methodology
-  };
-
-  res.render('pages/product_edit', templateVars);
+  if (!product) {
+    res.status(404).send('Product not found');
+  } else {
+    const templateVars = {
+      productId: productId,
+      productName: product.productName,
+      productOwnerName: product.productOwnerName,
+      Developers: product.Developers,
+      scrumMasterName: product.scrumMasterName,
+      startDate: product.startDate,
+      methodology: product.methodology
+    };
+    res.status(200).render('pages/product_edit', templateVars);
+  }
 });
 
 // Health Endpoint 
@@ -151,7 +158,7 @@ app.post('/api/products/add', (req, res) => {
   // Write the updated data back to the file
   fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
 
-  res.redirect('/api/products');
+  res.status(201).redirect('/api/products');
 });
 
 // Edit Product Endpoint
@@ -170,7 +177,7 @@ app.post('/api/products/:id/edit', (req, res) => {
   // Write the updated data back to the file
   fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
 
-  res.redirect('/api/products');
+  res.status(200).redirect('/api/products');
 });
 
 // DELETE
@@ -182,7 +189,7 @@ app.post("/api/products/:id/delete", (req, res) => {
   // Write the updated data back to the file
   fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
 
-  res.redirect('/api/products');
+  res.status(200).redirect('/api/products');
 });
 
 // PORT
