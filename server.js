@@ -68,6 +68,8 @@ app.get('/api', (req, res) => {
 
 // Products Endpoint
 app.get('/api/products', (req, res) => {
+
+  // Using template for variables to render on the index page
   const templateVars = {
     productList: productsDatabase,
     productCount: productCount
@@ -86,6 +88,8 @@ app.get('/api/products/add', (req, res) => {
 
 // View Details Product Endpoint
 app.get('/api/products/:id/details', (req, res) => {
+
+  // Turning id from the request from string to integer 
   const productId = parseInt(req.params.id);
   const product = productsDatabase[productId];
   if (!product) {
@@ -129,7 +133,7 @@ app.get('/api/products/:id/edit', (req, res) => {
   }
 });
 
-// Health Endpoint 
+// Health Endpoint Test
 app.get("/api/health", (req, res) => {
   res.status(200).send('Component is healthy! :)');
 });

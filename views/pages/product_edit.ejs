@@ -15,6 +15,7 @@
 
 
 <body>
+  <!-- Get contents from _header.ejs -->
   <%- include('../partials/_header') %>
 
     <!-- Edit Product From  -->
@@ -30,8 +31,6 @@
             <input id="edit-product-owner-name" type="text" name="productOwnerName" value="<%= productOwnerName %>">
           </div>
 
-          <!-- <input type="text" name="Developers" value="<%= Developers %>"> -->
-
           <div class="form-column">
             <label for="edit-scrum-master">Scrum Master:</label>
             <input id="edit-scrum-master" type="text" name="scrumMasterName" value="<%= scrumMasterName %>">
@@ -42,7 +41,6 @@
             <input id="edit-start-date" type="text" name="startDate" value="<%= startDate %>">
           </div>
         </div>
-
 
         <div class="form-row">
           <div class="form-column">
@@ -63,7 +61,6 @@
 
         </div>
         <input type="submit" value="Save Edits">
-        <!-- <button type="submit">Save</button> -->
       </form>
     </div>
 

@@ -15,10 +15,13 @@
 
 
 <body>
+  <!-- Get contents from _header.ejs -->
   <%- include('../partials/_header') %>
 
+    <!-- Showing product details -->
     <div class="product-details">
-      <h2 style="text-align: center; font-size: 20px;">Product Details for: <%= productName %>
+      <h2 style="text-align: center; font-size: 20px;"><b>Product Details for:</b>
+        <%= productName %>
       </h2>
       <ul class="product-details-ul" style="list-style-type: none">
         <li><b>Product ID:</b>
