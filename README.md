@@ -21,6 +21,32 @@ You can also run the above all at once in the terminal with:
 - Install all dependencies (using the `npm install` command).
 - Run the development web server using the `nodemon server.js` command (nodemon is required, node will limit some functionality).
 
+## Detailed Steps
+
+### Clone Repository
+
+```sh
+git clone git@github.com:MorsalN/MORSAL-NIYAZ-IS24-full-stack-competition-req97073.git
+```
+
+### npm install
+
+```sh
+npm install express && npm install ejs && npm install body-parser && npm install chance && npm install --save path && npm install nodemon --save-dev
+```
+
+### Go To Project Folder
+
+```sh
+cd MORSAL-NIYAZ-IS24-full-stack-competition-req97073.git
+```
+
+### Go To Project Folder
+
+```sh
+nodemon server.js
+```
+
 ## Code Challenge Context
 
 The BC Government Ministry of Citizens' Services Information Management Branch (IMB) is currently trying to catalog current modern web applications in GitHub, as well as new products that are coming up in the future. Currently there are 40 products marked for modernization that need to be cataloged, as well as 3 products that are either actively being developed or in a maintenance lifecycle.
