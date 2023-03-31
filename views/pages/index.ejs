@@ -10,6 +10,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <script src="counter.js"></script> -->
   <title>Information Management Branch</title>
 </head>
 
@@ -19,7 +20,7 @@
 
     <div class="product-summary">
       <div class="count">
-        <p style="font-size: 30px;">
+        <p id="productCount" style="font-size: 30px;">
           <%= productCount %>
         </p>
         <p>Total Product Count</p>
@@ -36,8 +37,23 @@
     <!-- Main with list of products -->
     <%- include('./product_data') %>
 
+      <script>
+        // GET request to the server to get the updated product count every 5 seconds
+        function updateProductCount() {
+          fetch('/api/products/count')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              document.getElementById('productCount').textContent = data.count;
+            });
+        }
 
-
+        setInterval(updateProductCount, 1000);
+      </script>
 
       <!-- Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

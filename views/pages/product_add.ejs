@@ -24,22 +24,22 @@
         <div class="form-row">
           <div class="form-column">
             <label for="add-product-name">Product Name:</label>
-            <input type="text" id="add-product-name" name="productName" placeholder="Brooklyn 99">
+            <input type="text" id="add-product-name" name="productName" placeholder="Brooklyn 99" required>
           </div>
 
           <div class="form-column">
             <label for="add-product-owner-name">Product Owner</label>
-            <input type="text" id="add-product-owner-name" name="productOwnerName" placeholder="Jake Peralta">
+            <input type="text" id="add-product-owner-name" name="productOwnerName" placeholder="Jake Peralta" required>
           </div>
 
           <div class="form-column">
             <label for="add-scrum-master">Scrum Master:</label>
-            <input id="add-scrum-master" name="scrumMasterName" placeholder="Gina Linetti"></input>
+            <input id="add-scrum-master" name="scrumMasterName" placeholder="Gina Linetti" required></input>
           </div>
 
           <div class="form-column">
             <label for="add-start-date">Start Date:</label>
-            <input id="add-start-date" name="startDate" placeholder="YYYY/MM/DD"></input>
+            <input id="add-start-date" name="startDate" placeholder="YYYY/MM/DD" required></input>
           </div>
 
         </div>
@@ -48,13 +48,13 @@
           <div class="form-column">
             <% for (let i=1; i <=5; i++) { %>
               <label for="add-developer-<%= i %>">Developer <%= i %>:</label>
-              <input type="text" id="add-developer-<%= i %>" name="Developers[]" placeholder="Amy Santiago">
+              <input type="text" id="add-developer-<%= i %>" name="Developers[]" placeholder="Amy Santiago" required>
               <% } %>
           </div>
 
           <div class="form-column">
             <label for="add-methodology">Methodology:</label>
-            <select id="add-methodology" name="methodology" placeholder="Agile">
+            <select id="add-methodology" name="methodology" placeholder="Agile" required>
               <option value="">--Select Methodology--</option>
               <option value="agile">Agile</option>
               <option value="waterfall">Waterfall</option>
