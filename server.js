@@ -85,14 +85,14 @@ app.get('/api/products/add', (req, res) => {
 // View Details Product Endpoint
 app.get('/api/products/:id/details', (req, res) => {
   const productId = parseInt(req.params.id);
-  const { names, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
+  // const { Developers, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
   const product = productsDatabase[productId];
   console.log('product', product);
   const templateVars = {
     productId: productId,
     productName: product.productName,
     productOwnerName: product.productOwnerName,
-    names: product.names,
+    Developers: product.Developers,
     scrumMasterName: product.scrumMasterName,
     startDate: product.startDate,
     methodology: product.methodology
@@ -109,17 +109,17 @@ app.get("/api/health", (req, res) => {
 // POST
 // Handle Form Submission
 app.post('/api/products/add', (req, res) => {
-  const { names, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
+  const { Developers, productName, productOwnerName, scrumMasterName, startDate, methodology } = req.body;
 
   // Ensure ids are not the same
   const newProductId = productCount + 1;
 
-  // // Add a new product to the existing data
+  // Add a new product to the existing data
   const newProductData = {
     productId: newProductId,
     productName,
     productOwnerName,
-    names,
+    Developers,
     scrumMasterName,
     startDate,
     methodology
@@ -131,10 +131,10 @@ app.post('/api/products/add', (req, res) => {
   fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
 
 
-  const templateVars = {
-    productList: productsDatabase,
-    productCount: productCount
-  };
+  // const templateVars = {
+  //   productList: productsDatabase,
+  //   productCount: productCount
+  // };
 
   res.redirect('/api/products');
 
