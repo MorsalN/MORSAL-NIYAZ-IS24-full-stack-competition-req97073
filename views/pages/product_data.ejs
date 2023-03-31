@@ -1,45 +1,48 @@
 <!-- Main table with all the products listed -->
 <div class="main-table-div">
-  <table class="main-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Product</th>
-        <th>Owner Name</th>
-        <th>Details</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% Object.values(productList).forEach(function(product) { %>
-        <tr class="product-rows">
-          <td><span id="productId">
-              <%= product.productId %>
-            </span></td>
-          <td><span id="productCount">
-              <%= product.productName %>
-            </span></td>
-          <td><span id="productOwner">
-              <%= product.productOwnerName %>
-            </span></td>
-          <td><span id="productDetails">
-              <form action="/api/products/<%= product.productId %>/details" method="GET">
-                <button type="submit" class="btn btn-outline-info">View</button>
-              </form>
-            </span></td>
-          <td><span id="productEdit">
-              <form action="/api/products/<%= product.productId %>/edit" method="GET">
-                <button type="submit" class="btn btn-outline-secondary">Edit</button>
-              </form>
-            </span></td>
-          <td><span id="doneCount">
-              <form action="/api/products/<%= product.productId %>/delete" method="DELETE">
-                <button type="submit" class="btn btn-outline-danger">Delete</button>
-              </form>
-            </span></td>
+  <div class="main-table-content">
+    <table class="main-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product</th>
+          <th>Owner Name</th>
+          <th>Details</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
-        <% }); %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% Object.values(productList).forEach(function(product) { %>
+          <tr class="product-rows">
+            <td><span id="productId">
+                <%= product.productId %>
+              </span></td>
+            <td><span id="productCount">
+                <%= product.productName %>
+              </span></td>
+            <td><span id="productOwner">
+                <%= product.productOwnerName %>
+              </span></td>
+            <td><span id="productDetails">
+                <form action="/api/products/<%= product.productId %>/details" method="GET">
+                  <button type="submit" class="btn btn-outline-info">View</button>
+                </form>
+              </span></td>
+            <td><span id="productEdit">
+                <form action="/api/products/<%= product.productId %>/edit" method="PUT">
+                  <button type="submit" class="btn btn-outline-secondary">Edit</button>
+                </form>
+              </span></td>
+            <td><span id="doneCount">
+                <form action="/api/products/<%= product.productId %>/delete" method="POST">
+                  <button type="submit" class="btn btn-outline-danger">Delete</button>
+                </form>
+              </span></td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+
 </div>

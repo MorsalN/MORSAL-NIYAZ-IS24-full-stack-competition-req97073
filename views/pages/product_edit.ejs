@@ -20,13 +20,50 @@
     <!-- Edit Product From  -->
     <div class="edit-form">
       <form action="/api/products/<%= productId %>/edit" method="POST">
-        <input type="text" name="productName" value="<%= productName %>">
-        <input type="text" name="productOwnerName" value="<%= productOwnerName %>">
-        <input type="text" name="Developers" value="<%= Developers %>">
-        <input type="text" name="scrumMasterName" value="<%= scrumMasterName %>">
-        <input type="text" name="startDate" value="<%= startDate %>">
-        <input type="text" name="methodology" value="<%= methodology %>">
-        <button type="submit">Save</button>
+        <div class="form-row">
+          <div class="form-column">
+            <label for="edit-product-name">Product Name:</label>
+            <input id="edit-product-name" type="text" name="productName" value="<%= productName %>">
+          </div>
+          <div class="form-column">
+            <label for="edit-product-owner-name">Product Owner</label>
+            <input id="edit-product-owner-name" type="text" name="productOwnerName" value="<%= productOwnerName %>">
+          </div>
+
+          <!-- <input type="text" name="Developers" value="<%= Developers %>"> -->
+
+          <div class="form-column">
+            <label for="edit-scrum-master">Scrum Master:</label>
+            <input id="edit-scrum-master" type="text" name="scrumMasterName" value="<%= scrumMasterName %>">
+          </div>
+
+          <div class="form-column">
+            <label for="edit-start-date">Start Date:</label>
+            <input id="edit-start-date" type="text" name="startDate" value="<%= startDate %>">
+          </div>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-column">
+            <label for="edit-developers">Developers:</label>
+            <input type="text" id="edit-developers" name="Developers[]" value="<%= Developers %>">
+          </div>
+
+          <div class="form-column">
+            <label for="edit-methodology">Methodology:</label>
+            <select id="edit-methodology" name="methodology">
+              <option value="<%= methodology %>">
+                <%= methodology %>
+              </option>
+              <option value="agile">Agile</option>
+              <option value="waterfall">Waterfall</option>
+            </select>
+          </div>
+
+        </div>
+        <input type="submit" value="Save Edits">
+        <!-- <button type="submit">Save</button> -->
       </form>
     </div>
 

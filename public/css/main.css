@@ -7,13 +7,14 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #385a8a;
   padding: 20px 10px;
+  color: rgb(241, 234, 221);
 }
 
 .header a {
   float: left;
-  color: black;
+  color: rgb(241, 234, 221);
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -28,13 +29,13 @@ body {
 }
 
 .header a:hover {
-  background-color: #ddd;
+  background-color:  #7a8da7;
   color: black;
 }
 
 .header a.active {
-  background-color: dodgerblue;
-  color: white;
+  background-color: #e8ad17;
+  color: rgb(255, 255, 255);
 }
 
 .header-right {
@@ -59,16 +60,20 @@ body {
   margin-right: auto;
   width: 75%;
   height: 600px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   margin-top: 20px; 
+}
+
+.main-table-content {
+  border: 15px solid #284163;
+  border-radius: 25px;
+  position:sticky;
 }
 
 table.main-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  /* border: 1px solid #c5b1b1;
-  border-radius: 25px; */
 }
 
 thead {
@@ -104,7 +109,7 @@ td, th {
 }
 
 /* Add Form */
-.add-form, .edit-form {
+.add-form {
   /* margin-top: 10%; */
   width: 50%;
   margin-left: auto;
@@ -165,6 +170,20 @@ select {
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
+}
+
+/* Edit Form */
+.edit-form {
+  /* margin-top: 10%; */
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid rgb(115, 137, 112);
+  padding: 10px;
+  border-radius: 25px;
+  background: rgb(188, 198, 186);
+  height: auto;
+  display: flex;
 }
 
 /* Total Count */

@@ -146,7 +146,6 @@ app.post('/api/products/add', (req, res) => {
     startDate,
     methodology
   };
-  // productsDatabase[new Date().getTime()] = newProductData;
   productsDatabase[newProductId] = newProductData;
 
   // Write the updated data back to the file
@@ -174,6 +173,17 @@ app.post('/api/products/:id/edit', (req, res) => {
   res.redirect('/api/products');
 });
 
+// DELETE
+// Delete Product Endpoint
+app.post("/api/products/:id/delete", (req, res) => {
+  const productId = parseInt(req.params.id);
+  delete productsDatabase[productId];
+
+  // Write the updated data back to the file
+  fs.writeFileSync('generated-data.json', JSON.stringify(productsDatabase));
+
+  res.redirect('/api/products');
+});
 
 // PORT
 app.listen(PORT, () => {
